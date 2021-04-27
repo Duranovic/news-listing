@@ -1,0 +1,27 @@
+<div class="news-grid">
+    <div class="news-grid__order-by" *ngIf="containFilter">
+        <mat-form-field appearance="fill" color="accent">
+            <mat-label>Order by</mat-label>
+            <mat-select [(value)]="sortBy">
+              <mat-option value="popularity">Popularity</mat-option>
+              <mat-option value="relevance">Relevance</mat-option>
+              <mat-option value="publishedAt">Published date</mat-option>
+            </mat-select>
+          </mat-form-field>
+    </div>  
+    <div class="news-grid__items">
+        <div class="news-grid__item" *ngFor="let item of fakeArray">
+            <img src="https://i.picsum.photos/id/452/500/300.jpg?hmac=IhEd6mtM1CkKO6lWTQqYq_mYARmq8W_bdUDysyK4dxs" alt="Image">
+            <div class="news-grid__content">
+                <h3>Juror in the Derek Chauvin trial 
+                    speaks out
+                </h3>
+                <p>Lisa Christensen listened to the whole trial, but as an alternate juror did not deliberate on verdict.</p>
+                <a mat-stroked-button color="warn" href="#">Read full article</a>
+            </div>
+        </div>
+    </div>
+    <div class="text-center mb-5">
+        <button mat-raised-button color="accent">Load more</button>
+    </div>
+</div>

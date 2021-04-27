@@ -1,0 +1,53 @@
+@import './_variables.scss';
+// Style for material
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+h1.h1 {
+  font-weight: bold;
+  font-size: 32px;
+  filter: drop-shadow(0 0 5px gainsboro);
+}
+
+.link{
+    color: black;
+    background: $yellow;
+    padding: 3px 6px;
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.search-custom-control{
+  max-width: 500px;
+  display: flex;
+  box-shadow: 0 3px 6px 2px rgb(238, 238, 238);
+  padding: 10px 0;
+  position: relative;
+  input{
+    position: absolute;
+    top: 50%;
+    transform: translatey(-50%);
+    border: none;
+    height: 100%;
+    width: 100%;
+    padding: 0 48px;
+  }
+  mat-icon{
+    position: relative;
+    z-index: 10;
+    left: 16px;
+  }
+}

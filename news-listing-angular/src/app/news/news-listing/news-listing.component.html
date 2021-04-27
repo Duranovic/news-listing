@@ -1,0 +1,20 @@
+<div class="news-listing">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="text-center">
+                    <h1 class="h1">Here are the top news</h1>
+                    <p>News are listed from the <a href="#" class="link">newsapi.org</a></p>
+                </div>
+                <div class="search-custom-control">
+                    <label class="visually-hidden" for="search-news">Search news from newsapi.org - Everything API</label>
+                    <mat-icon>search</mat-icon>
+                    <input type="text" name="search-news" id="search-news" placeholder="Search for news"
+                     #query
+                    (keyup)="search(query.value)">
+                </div>
+                <app-news-grid [containFilter]="(searchKey != '')?true:false"></app-news-grid>
+            </div>
+        </div>
+    </div>
+</div>
