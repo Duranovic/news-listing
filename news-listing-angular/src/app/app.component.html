@@ -1,4 +1,14 @@
 <router-outlet name="header"></router-outlet>
 <main>
+  <button mat-raised-button color="accent" (click)="loadNews()">Load more</button>
+  <div *ngIf="news$ | async as j">
+    <h1>Error: {{error$ | async}}</h1>
+    <h1>News</h1>
+    <ul>
+      <li *ngFor="let item of j">
+        <span>{{item.title}}</span>
+      </li>
+    </ul>
+  </div>
   <router-outlet></router-outlet>
 </main>

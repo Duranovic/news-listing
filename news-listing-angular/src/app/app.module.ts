@@ -10,6 +10,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { NewsModule } from './news/news.module';
 import { MaterialModule } from './material/material.module';
+import { RootStoreModule } from './root-store';
+import { DataService } from './core/services';
 
 
 export function configServiceFactory(config: ConfigService): unknown {
@@ -25,12 +27,14 @@ export function configServiceFactory(config: ConfigService): unknown {
     BrowserModule,
     AppRoutingModule,
     CoreModule,
+    RootStoreModule,
     HttpClientModule,
     BrowserAnimationsModule,
     NewsModule,
     MaterialModule
   ],
   providers: [
+    DataService,
 		ConfigService, 
     {
 			provide: APP_INITIALIZER,

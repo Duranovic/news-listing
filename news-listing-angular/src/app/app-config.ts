@@ -5,7 +5,6 @@ export class AppConfig {
     appSettings: {
         apiEndpoints: {
             newsapi: {
-                version: string;
                 url: string;
                 apiKey: string;
             };
