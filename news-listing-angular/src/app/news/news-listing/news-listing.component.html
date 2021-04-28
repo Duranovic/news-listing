@@ -13,7 +13,11 @@
                      #query
                     (keyup)="search(query.value)">
                 </div>
-                <app-news-grid [containFilter]="(searchKey != '')?true:false"></app-news-grid>
+                <app-news-grid 
+                    [news]="news$ | async" 
+                    [isLoading]="isLoading$ | async" 
+                    [error]="error$ | async"
+                    [containFilter]="(searchKey != '')?true:false"></app-news-grid>
             </div>
         </div>
     </div>

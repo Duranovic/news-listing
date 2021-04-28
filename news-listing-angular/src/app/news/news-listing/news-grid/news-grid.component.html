@@ -9,19 +9,18 @@
             </mat-select>
           </mat-form-field>
     </div>  
+    <mat-spinner *ngIf="isLoading" class="mx-auto" color="accent"></mat-spinner>
     <div class="news-grid__items">
-        <div class="news-grid__item" *ngFor="let item of fakeArray">
-            <img src="https://i.picsum.photos/id/452/500/300.jpg?hmac=IhEd6mtM1CkKO6lWTQqYq_mYARmq8W_bdUDysyK4dxs" alt="Image">
+        <div class="news-grid__item" *ngFor="let item of news">
+            <img [src]="item.urlToImage || 'https://via.placeholder.com/500'" alt="Image">
             <div class="news-grid__content">
-                <h3>Juror in the Derek Chauvin trial 
-                    speaks out
-                </h3>
-                <p>Lisa Christensen listened to the whole trial, but as an alternate juror did not deliberate on verdict.</p>
+                <h3>{{item.title}}</h3>
+                <p>{{item.description}}</p>
                 <a mat-stroked-button color="warn" href="#">Read full article</a>
             </div>
         </div>
     </div>
-    <div class="text-center mb-5">
-        <button mat-raised-button color="accent">Load more</button>
+    <div class="text-center mb-5" *ngIf="showLoadMoreBtn">
+        <button mat-raised-button color="accent" (click)="loadMoreNews()">Load more</button>
     </div>
 </div>

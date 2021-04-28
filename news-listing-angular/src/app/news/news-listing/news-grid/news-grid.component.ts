@@ -1,4 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { News } from 'src/app/core/models';
+import { NewsStoreActions, RootStoreState } from 'src/app/root-store';
+import { Store } from '@ngrx/store';
+
 
 @Component({
   selector: 'app-news-grid',
@@ -7,11 +11,23 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class NewsGridComponent implements OnInit {
   @Input() containFilter: boolean = false;
-  fakeArray: string[] = new Array(12);
+  @Input() news: News[];
+  
   sortBy: string = "publishedAt";
-  constructor() { }
+  showLoadMoreBtn: boolean = true;
+  @Input() isLoading: boolean;
+  @Input() error: boolean;
+  constructor(private store$: Store<RootStoreState.State>) { }
 
   ngOnInit(): void {
+
+  }
+
+  loadMoreNews(){
+    this.store$.dispatch(
+      new NewsStoreActions.LoadRequestAction()
+    );
+    this.showLoadMoreBtn = false;
   }
 
 }
