@@ -17,6 +17,9 @@
             width: 100%;
             object-fit: cover;
             filter: blur(7px);
+            @include media-xs{
+                height: 250px;
+            }
         }
         .article__footer{
             margin: 84px 0;

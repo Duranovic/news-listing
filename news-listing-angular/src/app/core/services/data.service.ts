@@ -11,7 +11,7 @@ import { BaseApiService } from './api/base-api.service';
 })
 export class DataService {
   private API_BASE_URL = 'https://newsapi.org/v2';
-  private API_KEY = "08823e1ce681449a8f67c7b0bb890484";
+  private API_KEY = "2e3f98616d14426d8ef0847f928a59e2";
   // private readonly API_BASE_URL;
   // private readonly API_APIKEY;
   private page = 0;

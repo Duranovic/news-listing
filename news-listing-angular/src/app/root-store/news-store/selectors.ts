@@ -23,7 +23,7 @@ export const selectAllNewsItems: (
 export const selectNewsById = (id: string) =>
   createSelector(selectAllNewsItems, (allNews: News[]) => {
     if (allNews) {
-      return allNews.find(p => p.id === id);
+      return allNews.find(p => p.title === id);
     } else {
       return null;
     }

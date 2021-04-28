@@ -16,7 +16,7 @@
             <div class="news-grid__content">
                 <h3>{{item.title}}</h3>
                 <p>{{item.description}}</p>
-                <a mat-stroked-button color="warn" href="#">Read full article</a>
+                <a mat-stroked-button color="warn" [routerLink]="'article/' + item.title">Read full article</a>
             </div>
         </div>
     </div>

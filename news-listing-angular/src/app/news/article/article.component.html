@@ -1,24 +1,23 @@
-<div class="news-details">
+<div class="news-details" *ngIf="article$ | async as article">
     <div class="news-details-inner">
-        <img src="https://picsum.photos/1000/1000" alt="Photo">
+        <img [src]="article.urlToImage" alt="Photo">
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h1 class="mt-5 text-center">Juror in the Derek Chauvin trial 
-                        speaks out</h1>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum reiciendis aspernatur harum rerum non. Minima quis adipisci, vitae rem odio, recusandae officiis assumenda necessitatibus impedit unde eius perferendis, quas fugiat mollitia esse ducimus? Voluptas inventore dolores, qui tempora voluptatibus laborum incidunt, at numquam pariatur omnis officia corporis magnam. Modi, dolorum! Repellat eum praesentium commodi libero ab sequi unde voluptas deleniti aspernatur vel, perferendis suscipit! Ipsam, magni. Harum esse, tempore eligendi a doloremque repudiandae aut? Laboriosam officiis dolores ab reprehenderit mollitia consectetur eius impedit quas molestias atque voluptates iste nobis quo sint id eveniet esse est, libero error minima aut suscipit!</p>
+                    <h1 class="mt-5 text-center">{{article.title}}</h1>
+                        <p>{{article.description}}</p>
                         <div class="article__footer">
                             <div class="article__footer-item">
                                 <span>Source: </span>
-                                <span class="link">BBC News</span>
+                                <span class="link">{{article.source.name}}</span>
                             </div>
                             <div class="article__footer-item">
                                 <span>Author: </span>
-                                <span class="link">Author</span>
+                                <span class="link">{{article.author || 'Unknown'}}</span>
                             </div>
                             <div class="article__footer-item">
                                 <span>Published at</span>
-                                <span class="link">29.04.1998 13:14</span>
+                                <span class="link">{{article.publishedAt | date}}</span>
                             </div>
                         </div>
                 </div>
