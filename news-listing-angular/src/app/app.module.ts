@@ -12,6 +12,7 @@ import { NewsModule } from './news/news.module';
 import { MaterialModule } from './material/material.module';
 import { RootStoreModule } from './root-store';
 import { DataService } from './core/services';
+import { NewsService } from './news/services/news.service';
 
 
 export function configServiceFactory(config: ConfigService): unknown {
@@ -35,6 +36,7 @@ export function configServiceFactory(config: ConfigService): unknown {
   ],
   providers: [
     DataService,
+    NewsService,
 		ConfigService, 
     {
 			provide: APP_INITIALIZER,

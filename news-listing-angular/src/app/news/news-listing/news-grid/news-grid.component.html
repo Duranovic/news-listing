@@ -2,7 +2,7 @@
     <div class="news-grid__order-by" *ngIf="containFilter">
         <mat-form-field appearance="fill" color="accent">
             <mat-label>Order by</mat-label>
-            <mat-select [(value)]="sortBy">
+            <mat-select [(value)]="sortBy" (selectionChange)="onOrderByChange()">
               <mat-option value="popularity">Popularity</mat-option>
               <mat-option value="relevance">Relevance</mat-option>
               <mat-option value="publishedAt">Published date</mat-option>
@@ -20,7 +20,7 @@
             </div>
         </div>
     </div>
-    <div class="text-center mb-5" *ngIf="showLoadMoreBtn">
+    <div class="text-center mb-5" *ngIf="showLoadMoreBtn && !containFilter">
         <button mat-raised-button color="accent" (click)="loadMoreNews()">Load more</button>
     </div>
 </div>

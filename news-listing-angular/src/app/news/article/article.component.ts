@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
 import { News } from 'src/app/core/models';
-import { NewsStoreSelectors, RootStoreState } from 'src/app/root-store';
+import { NewsEverythingStoreSelectors, NewsStoreSelectors, RootStoreState } from 'src/app/root-store';
 import { Store } from '@ngrx/store';
+import { NewsService } from '../services/news.service';
 
 @Component({
   selector: 'app-news-details',
@@ -18,7 +19,7 @@ export class ArticleComponent implements OnInit {
   error$: Observable<any>;
   isLoading$: Observable<boolean>
 
-  constructor(private route: ActivatedRoute, private store$: Store<RootStoreState.State>) { }
+  constructor(private route: ActivatedRoute, private store$: Store<RootStoreState.State>, private newsSerivce: NewsService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(x=>{
@@ -28,9 +29,16 @@ export class ArticleComponent implements OnInit {
   }
 
   getArticle(){
-    this.article$ = this.store$.select(
-      NewsStoreSelectors.selectNewsById(this.articleId)
-    );
+    if(this.newsSerivce.searchKey == ''){
+      this.article$ = this.store$.select(
+        NewsStoreSelectors.selectNewsById(this.articleId)
+      );
+    }else{
+      this.article$ = this.store$.select(
+        NewsEverythingStoreSelectors.selectNewsById(this.articleId)
+      );
+    }
+
 
     this.error$ = this.store$.select(
       NewsStoreSelectors.selectNewsError

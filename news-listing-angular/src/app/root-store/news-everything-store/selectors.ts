@@ -3,7 +3,6 @@ import {
   createSelector,
   MemoizedSelector
 } from '@ngrx/store';
-
 import { News } from 'src/app/core/models/news';
 		
 import { featureAdapter, State } from './state';
@@ -15,10 +14,11 @@ export const getIsLoading = (state: State): boolean => state.isLoading ?? false;
 export const selectNewsState: MemoizedSelector<
   object,
   State
-> = createFeatureSelector<State>('news');
+> = createFeatureSelector<State>('news-everything');
+
 
 export const selectAllNewsItems: (
-  state: object
+  state: object,
 ) => News[] = featureAdapter.getSelectors(selectNewsState).selectAll;
 
 export const selectNewsById = (id: string) =>

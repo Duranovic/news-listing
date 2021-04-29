@@ -10,8 +10,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ArticleComponent } from './article/article.component';
-import { NewsService } from './services/news.service';
-
 
 @NgModule({
   declarations: [
@@ -28,7 +26,6 @@ import { NewsService } from './services/news.service';
     MatSelectModule,
     MatProgressSpinnerModule,
     NewsRoutingModule
-  ],
-  providers: [NewsService]
+  ]
 })
 export class NewsModule { }

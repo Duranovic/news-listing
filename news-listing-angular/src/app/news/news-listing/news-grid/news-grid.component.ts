@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { News } from 'src/app/core/models';
-import { NewsStoreActions, RootStoreState } from 'src/app/root-store';
+import { NewsEverythingStoreActions, NewsStoreActions, RootStoreState } from 'src/app/root-store';
 import { Store } from '@ngrx/store';
-import { Router } from '@angular/router';
+import { NewsService } from '../../services/news.service';
 
 
 @Component({
@@ -10,18 +10,22 @@ import { Router } from '@angular/router';
   templateUrl: './news-grid.component.html',
   styleUrls: ['./news-grid.component.scss']
 })
-export class NewsGridComponent implements OnInit {
+export class NewsGridComponent {
   @Input() containFilter: boolean = false;
   @Input() news: News[];
+  @Input() isLoading: boolean;
+  @Input() error: boolean;
   
   sortBy: string = "publishedAt";
   showLoadMoreBtn: boolean = true;
-  @Input() isLoading: boolean;
-  @Input() error: boolean;
-  constructor(private store$: Store<RootStoreState.State>, private router: Router) { }
 
-  ngOnInit(): void {
+  constructor(private store$: Store<RootStoreState.State>, private newsSrvice: NewsService) { }
 
+  onOrderByChange(){
+    this.newsSrvice.sortBy = this.sortBy;
+      this.store$.dispatch(
+        new NewsEverythingStoreActions.LoadRequestAction
+      );
   }
 
   loadMoreNews(){
@@ -30,4 +34,5 @@ export class NewsGridComponent implements OnInit {
     );
     this.showLoadMoreBtn = false;
   }
+  
 }

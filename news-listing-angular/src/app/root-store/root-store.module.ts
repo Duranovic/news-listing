@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { NewsEverythingStoreModule } from './news-everything-store';
 
 import { NewsStoreModule } from './news-store';
 
@@ -10,6 +11,7 @@ import { NewsStoreModule } from './news-store';
   imports: [
     CommonModule,
     NewsStoreModule,
+    NewsEverythingStoreModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({

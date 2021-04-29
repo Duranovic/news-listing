@@ -11,20 +11,28 @@ import { BaseApiService } from './api/base-api.service';
 })
 export class DataService {
   private API_BASE_URL = 'https://newsapi.org/v2';
-  private API_KEY = "2e3f98616d14426d8ef0847f928a59e2";
+  private API_KEY = "08823e1ce681449a8f67c7b0bb890484";
   // private readonly API_BASE_URL;
   // private readonly API_APIKEY;
-  private page = 0;
+  private pageTopHeadlines = 0;
 
   constructor(readonly http: HttpClient, readonly appConfig: AppConfig) {
     // this.API_BASE_URL = appConfig.appSettings.apiEndpoints.newsapi.url;
     // this.API_APIKEY = appConfig.appSettings.apiEndpoints.newsapi.apiKey;
   }
 
-  getNews(): Observable<News[]> {
+  getTopHeadlines(): Observable<News[]> {
     return this.http
       .get<NewsResult>(
-      `${this.API_BASE_URL}/top-headlines?country=us&page=${++this.page}&apiKey=${this.API_KEY}`
+      `${this.API_BASE_URL}/top-headlines?country=us&page=${++this.pageTopHeadlines}&apiKey=${this.API_KEY}`
+      )
+      .pipe(map(result => result.articles));
+  }
+
+  getEverything(searchKey: string, sortBy: string): Observable<News[]> {
+    return this.http
+      .get<NewsResult>(
+      `${this.API_BASE_URL}/everything?q=${searchKey}&sortBy=${sortBy}&apiKey=${this.API_KEY}`
       )
       .pipe(map(result => result.articles));
   }

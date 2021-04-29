@@ -14,10 +14,19 @@
                     (keyup)="search(query.value)">
                 </div>
                 <app-news-grid 
+                    *ngIf="searchKey == ''" 
                     [news]="news$ | async" 
                     [isLoading]="isLoading$ | async" 
                     [error]="error$ | async"
-                    [containFilter]="(searchKey != '')?true:false"></app-news-grid>
+                    [containFilter]="(searchKey != '')?true:false">
+                </app-news-grid>
+                <app-news-grid
+                    *ngIf="searchKey != ''" 
+                    [news]="newsEverything$ | async" 
+                    [isLoading]="isLoadingEverything$ | async" 
+                    [error]="errorEverything$ | async"
+                    [containFilter]="(searchKey != '')?true:false">
+            </app-news-grid>
             </div>
         </div>
     </div>
